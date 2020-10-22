@@ -1,16 +1,41 @@
-html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-family: 'madetommy-regular';
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.mt-reg {
+	font-family: 'madetommy-regular';
+}
+.mt-thin {
+	font-family: 'madetommy-thin';
+}
+.mt-light {
+	font-family: 'madetommy-light';
+}
+.mt-bold {
+	font-family: 'madetommy-bold';
 }
 
-* {
-  box-sizing: border-box;
+.hero-container {
+	min-height: 100vh;
+}
+
+.btn-solid {
+	padding: 0.63rem 1.7rem;
+    background: #0056FF;
+    border: none;
+    border-radius: 100px;
+    color: white;
+    font-size: 0.8rem;
+}
+.btn-hollow {
+	padding: 0.63rem 1.7rem;
+	border: 2px solid #0056FF;
+    border-radius: 100px;
+    color: #0056FF;
+	font-size: 0.8rem;
+	transition: 0.3s;
+}
+.btn-hollow:hover {
+	background: #0056FF;
+	color: white;
 }
