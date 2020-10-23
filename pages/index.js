@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import SingleArrowButton from '../components/Buttons/SingleArrowButton'
+import Timeline from '../components/Timeline/Timeline'
 
 export default function Home() {
 	return(
@@ -9,7 +10,7 @@ export default function Home() {
 					<div className="container">
 						<div className="d-flex align-items-center justify-content-between">
 							<div>
-								<h2 className="m-0 mt-bold">HEADS UP</h2>
+								<h2 className="m-0 mt-thin">Heads Up</h2>
 							</div>
 							<div>
 								<div className="d-flex align-items-center">
@@ -41,12 +42,20 @@ export default function Home() {
 							</div>
 						</div>
 					</div>
-					<div className="row no-gutters align-items-center top-section-content">
+					<div className="row no-gutters align-items-center top-section-content container mx-auto">
 						<div className="col-12 col-md-6">
 							<div className="d-flex align-items-center justify-content-center">
 								<div>
-									<h1>Heads Up!</h1>
-									<h5>Building the mental wellness community India needs!</h5>
+									<h1 className="mt-bold font-3">Heads Up!</h1>
+									<h4 style={{color: "rgb(11 22 51 / 61%)"}}>
+										Building the mental wellness community India needs!
+									</h4>
+									<h6>
+										We at HeadsUp, aim to build mental wellness platform for teens and 
+										college folks with motto of awareness prior to treatment. We intent 
+										to provide psychological help to the people in their relationship, 
+										career and connect with the  experts in the field.
+									</h6>
 								</div>
 							</div>
 						</div>
@@ -74,11 +83,96 @@ export default function Home() {
 				</div>
 			</div>
 			<div className="py-5 bg-white">
-				asdfsdfkjds;klfjkl;j
+				<div className="py-5 container">
+					<h2 className="mt-bold">
+						Timeline
+					</h2>
+				</div>
+				<div className="mb-5">
+					<Timeline />
+				</div>
+			</div>
+			<div>
+				<div className="text-center mb-5">
+					<h1 className="mt-bold pb-5">My Wall</h1>
+				</div>
+				<div className="wall-container py-5 position-relative">
+					<div className="quote-container w-100 font-11 mt-light">
+						<div className="quote-box position-absolute p-3 p-md-5 d-flex align-items-center justify-content-center">
+							“Just because you don't understand it doesn't mean it isn't so.” – Lemony Snicket
+						</div>
+					</div>
+					<div className="py-1 py-md-3">
+						<form className="pt-5 m-2">
+							<div className="row no-gutters">
+								<div className="col-12 col-md-6">
+									<div className="form-group">
+										<input className="form-control" placeholder="Your Instagram handle" />
+									</div>
+									<div className="form-group">
+										<input className="form-control" placeholder="Your Email" />
+									</div>
+								</div>
+								<div className="col-12 col-md-6">
+									<div className="form-group">
+										<textarea className="form-control" rows="5" placeholder="Your Message" />
+									</div>
+									<div className="text-center">
+										<button className="btn btn-solid" type="submit">Share your Message</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 			<style jsx>{`
+				.wall-container {
+					min-height: 70vh;
+					background-image: url("/bg.png");
+					background-color: rgba(0,0,0,0.1);
+					background-size: cover;
+					background-position: center;
+				}
+				.quote-box {
+					background: white;
+					max-width: 800px;
+					margin: 0px auto;
+					left: 0px;
+					right: 0px;
+					border-radius: 10px;
+					box-shadow: 0px 0px 10px 2px #20253c2e;
+					min-height: 100px;
+					top: -50px;
+				}
+				.form-control {
+					max-width: 400px;
+					margin: 0px auto;
+					border: none;
+					border-bottom: 1px solid white;
+					color: white;
+					background: transparent;
+					border-radius: 0px;
+					transition: 0.3s;
+					font-size: 1.2rem;
+					font-family: madetommy-bold;
+				}
+				.form-control:focus {
+					border: none;
+					outline: none;
+					box-shadow: none;
+					border-bottom: 3px solid white;
+				}
+				input::-webkit-input-placeholder {color: #061242;}
+				input::-moz-placeholder { color: #061242;}
+				input:-ms-input-placeholder { color: #061242;}
+				input:-moz-placeholder {color: #061242;}
+				textarea::-webkit-input-placeholder {color: #061242;}
+				textarea::-moz-placeholder { color: #061242;}
+				textarea:-ms-input-placeholder { color: #061242;}
+				textarea:-moz-placeholder {color: #061242;} 
 				.top-section {
-					background: linear-gradient(to bottom,white,#174282)
+					background: linear-gradient(to bottom,white,#2998ca);
 				}
 				.top-section-content {
 					min-height: calc(100vh - 94px - 76px);
@@ -86,7 +180,7 @@ export default function Home() {
 				.menu-item {
 					padding: 34px 20px;
 					cursor: pointer;
-					font-family: madetommy-bold;
+					font-family: madetommy-light;
 					font-size: 1.1rem;
 					position: relative;
 				}

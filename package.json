@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
+    "flickity": "^2.2.1",
     "next": "9.5.5",
     "react": "17.0.0",
     "react-dom": "17.0.0",
+    "react-flickity-component": "^3.5.0",
     "react-icons": "^3.11.0"
   }
 }

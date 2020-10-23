@@ -1,4 +1,5 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../styles/flickity.css'
 import '../styles/font.css'
 import '../styles/globals.css'
 
