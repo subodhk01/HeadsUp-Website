@@ -5,9 +5,63 @@ import SingleArrowButton from '../components/Buttons/SingleArrowButton'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Timeline from '../components/Timeline/Timeline'
+import { loadFirebase } from '../util/firebase'
 
 export default function Home() {
 	const [ open, setOpen ] = React.useState(false)
+	const [ name, setName ] = React.useState("")
+	const [ email, setEmail ] = React.useState("")
+	const [ age, setAge ] = React.useState("")
+	const [ insta, setInsta ] = React.useState("")
+	const [ message, setMessage ] = React.useState("")
+	const [ msg1, setMsg1 ] = React.useState({})
+	const [ msg2, setMsg2 ] = React.useState({})
+	const handleGetAppSubmit = (event) => {
+		setMsg1({})
+		event.preventDefault()
+		let firebase = loadFirebase()
+		firebase.firestore().collection("getAppForm").add({
+			name: name,
+			email: email,
+			age: age
+		}).then((doc) => {
+			console.log(doc)
+			setMsg1({
+				success: true
+			})
+			setName("")
+			setEmail("")
+			setAge("")
+		}).catch((error) => {
+			console.log(error)
+			setMsg1({
+				error: true
+			})
+		})
+	}
+	const handleMessageSubmit = (event) => {
+		setMsg2({})
+		event.preventDefault()
+		let firebase = loadFirebase()
+		firebase.firestore().collection("messageWallForm").add({
+			insta: insta,
+			email: email,
+			message: message
+		}).then((doc) => {
+			console.log(doc)
+			setMsg2({
+				success: true
+			})
+			setInsta("")
+			setEmail("")
+			setMessage("")
+		}).catch((error) => {
+			console.log(error)
+			setMsg2({
+				error: true
+			})
+		})
+	}
 	return(
 		<div>
 			<Modal show={open} onHide={() => setOpen(false)} size="lg" centered>
@@ -16,30 +70,47 @@ export default function Home() {
 						<FaTimes size="24" />
 					</div>
 				</div>
-				<Modal.Body>
-					<div className="px-2 px-md-4">
-						<h4 className="text-pink mt-bold">Get the app now!</h4>
-						<div>
-
+				<form onSubmit={() => handleGetAppSubmit(event)}>
+					<Modal.Body>
+						<div className="px-2 px-md-4 pb-4">
+							<h4 className="text-pink mt-bold">Get the app now!</h4>
+							<div className="py-3 mx-auto" style={{maxWidth: "500px"}}>
+								<div className="form-group">
+									<label>Your Name:</label>
+									<input className="form-control" type="text" value={name} onChange={(value) => setName(event.target.value)} required/>
+								</div>
+								<div className="form-group">
+									<label>Your Email:</label>
+									<input className="form-control" type="email" value={email} onChange={(event) => setEmail(event.target.value)} required/>
+								</div>
+								<div className="form-group">
+									<label>Your Age:</label>
+									<input className="form-control" type="number" value={age} onChange={(event) => setAge(event.target.value)} required/>
+								</div>
+								<div>
+									{msg1 && msg1.success && <span className="text-success">You request has been recorded</span>}
+									{msg1 && msg1.error && <span className="text-danger">Unable to process your request, please try again later</span>}
+								</div>
+							</div>
 						</div>
-					</div>
-				</Modal.Body>
-				<Modal.Footer>
-					<div className="btn btn-hollow" onClick={() => setOpen(false)}>
-						Close	
-					</div>
-					<div className="btn btn-solid">
-						Submit
-					</div>
-				</Modal.Footer>
+					</Modal.Body>
+					<Modal.Footer>
+						<div className="btn btn-hollow" onClick={() => setOpen(false)}>
+							Close	
+						</div>
+						<button type="submit" className="btn btn-solid">
+							Submit
+						</button>
+					</Modal.Footer>
+				</form>
 			</Modal>
 			<div className="">
 				<div className="hero-container top-section position-relative">
-					<Header />
+					<Header open={open} setOpen={setOpen} />
 					<div className="row no-gutters align-items-center top-section-content container mx-auto">
 						<div className="col-12 col-md-6 py-5 py-md-0">
-							<div className="d-flex align-items-center justify-content-center py-5 py-md-0">
-								<div>
+							<div className="d-flex align-items-center justify-content-center pt-5 pt-md-0 pr-0 pr-md-4">
+								<div className="pt-5 pt-md-0">
 									<h1 className="mt-bold font-3">Heads Up!</h1>
 									<h4 style={{color: "rgb(11 22 51 / 61%)"}}>
 										Building the mental wellness community India needs!
@@ -53,12 +124,12 @@ export default function Home() {
 								</div>
 							</div>
 						</div>
-						<div className="col-12 col-md-6">
-							<div className="d-flex align-items-center justify-content-center">
-								<div>
-									<img />
+						<div className="col-12 col-md-6 pb-5 pb-md-0">
+							<div className="pb-5 pb-md-0">
+								<div className="video-container">
+									<iframe src="https://www.youtube.com/embed/nYcLnUxYYcw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 								</div>
-								<div className="d-flex justify-content-center">
+								<div className="d-flex justify-content-center pb-5 pb-md-0">
 									<SingleArrowButton solid onClick={() => setOpen(true)}>
 										Get the App
 									</SingleArrowButton>
@@ -77,8 +148,8 @@ export default function Home() {
 				</div>
 			</div>
 			<div className="py-5 bg-white" id="timeline">
-				<div className="py-5 container">
-					<h1 className="mt-bold">
+				<div className="py-5 container text-center">
+					<h1 className="mt-bold font-3">
 						Timeline
 					</h1>
 				</div>
@@ -89,9 +160,9 @@ export default function Home() {
 			<div className="position-relative" style={{top: "-100px"}} id="wall">
 
 			</div>
-			<div className="pt-5">
-				<div className="container mb-5">
-					<h1 className="mt-bold pb-5">My Wall</h1>
+			<div className="pt-5 mb-3 outer-wall">
+				<div className="container mb-5 text-center">
+					<h1 className="mt-bold pb-5 font-3">My Wall</h1>
 				</div>
 				<div className="wall-container py-5 position-relative">
 					<div className="quote-container w-100 font-11 mt-light">
@@ -100,19 +171,23 @@ export default function Home() {
 						</div>
 					</div>
 					<div className="py-1 py-md-3">
-						<form className="pt-5 m-2">
+						<form className="pt-5 m-2" onSubmit={(event) => handleMessageSubmit(event)}>
 							<div className="row no-gutters">
 								<div className="col-12 col-md-6">
 									<div className="form-group">
-										<input className="form-control" placeholder="Your Instagram handle" />
+										<input className="form-control" placeholder="Your Instagram handle" value={insta} onChange={(event) => setInsta(event.target.value)} required/>
 									</div>
 									<div className="form-group">
-										<input className="form-control" placeholder="Your Email" />
+										<input className="form-control" placeholder="Your Email" value={email} onChange={(event) => setEmail(event.target.value)} required/>
 									</div>
 								</div>
 								<div className="col-12 col-md-6">
 									<div className="form-group">
-										<textarea className="form-control" rows="5" placeholder="Your Message" />
+										<textarea className="form-control border-0" rows="5" placeholder="Your Message" value={message} onChange={(event) => setMessage(event.target.value)} required/>
+									</div>
+									<div className="w-100 text-center pb-3">
+										{msg2 && msg2.success && <span className="text-pink">You message has been recorded</span>}
+										{msg2 && msg2.error && <span className="text-danger">Unable to process your request, please try again later</span>}
 									</div>
 									<div className="text-center">
 										<button className="btn btn-solid" type="submit">Share your Message</button>
@@ -125,6 +200,18 @@ export default function Home() {
 			</div>
 			<Footer />
 			<style jsx>{`
+				.video-container {
+					box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.2);
+					display: flex;
+					margin-bottom: 40px;
+				}
+				.video-container iframe {
+					width: 100%;
+					min-height: 300px;
+				}
+				.outer-wall {
+					box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
+				}
 				.wall-container {
 					min-height: 70vh;
 					background-image: url("/bg.png");
@@ -149,7 +236,7 @@ export default function Home() {
 						font-size: 1rem;
 					}
 				}
-				.form-control {
+				.wall-container .form-control {
 					max-width: 400px;
 					margin: 0px auto;
 					border: none;
@@ -161,20 +248,20 @@ export default function Home() {
 					font-size: 1.2rem;
 					font-family: madetommy-bold;
 				}
-				.form-control:focus {
+				.wall-container .form-control:focus {
 					border: none;
 					outline: none;
 					box-shadow: none;
 					border-bottom: 3px solid rgba(255,255,255,0.5);
 				}
-				input::-webkit-input-placeholder {color: #061242c5;}
-				input::-moz-placeholder { color: #061242c5;}
-				input:-ms-input-placeholder { color: #061242c5;}
-				input:-moz-placeholder {color: #061242c5;}
-				textarea::-webkit-input-placeholder {color: #061242c5;}
-				textarea::-moz-placeholder { color: #061242c5;}
-				textarea:-ms-input-placeholder { color: #061242c5;}
-				textarea:-moz-placeholder {color: #061242c5;} 
+				.wall-container input::-webkit-input-placeholder {color: #06124275;}
+				.wall-container input::-moz-placeholder { color: #06124275;}
+				.wall-container input:-ms-input-placeholder { color: #06124275;}
+				.wall-container input:-moz-placeholder {color: #06124275;}
+				.wall-container textarea::-webkit-input-placeholder {color: #06124275;}
+				.wall-container textarea::-moz-placeholder { color: #06124275;}
+				.wall-container textarea:-ms-input-placeholder { color: #06124275;}
+				.wall-container textarea:-moz-placeholder {color: #06124275;} 
 				.top-section {
 					background: linear-gradient(to bottom,white,#2998ca);
 				}

@@ -27,7 +27,7 @@ export default function Footer() {
                                 <div className="d-flex align-items-center">
                                     <a href="">
                                         <div className="icon-box">
-                                            <FaInstagram color="white" size="24" />
+                                            <FaInstagram color="#061242" size="24" />
                                         </div>
                                     </a>
                                 </div>
@@ -38,8 +38,8 @@ export default function Footer() {
             </div>
             <style jsx>{`
                 .footer-container {
-                    background: #061242;
-                    color: white;
+                    background: white;
+                    color: #061242;
                 }
             `}</style>
         </div>

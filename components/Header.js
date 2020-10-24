@@ -1,4 +1,6 @@
-export default function Header() {
+import SingleArrowButton from './Buttons/SingleArrowButton'
+
+export default function Header(props) {
     return(
         <>
             <div className="bg-white header-container">
@@ -21,6 +23,11 @@ export default function Header() {
                                         <div className="menu-item-underline"></div>
                                     </div>
                                 </a>
+                                <div className="menu-item d-none d-md-block">
+                                    <SingleArrowButton solid onClick={() => props.setOpen(true)}>
+                                        Get the App
+                                    </SingleArrowButton>
+                                </div>
                             </div>
                         </div>
                     </div>
