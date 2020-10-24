@@ -1,50 +1,44 @@
-import Head from 'next/head'
+import React from 'react'
+import { FaTimes } from 'react-icons/fa'
+import Modal from 'react-bootstrap/Modal'
 import SingleArrowButton from '../components/Buttons/SingleArrowButton'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 import Timeline from '../components/Timeline/Timeline'
 
 export default function Home() {
+	const [ open, setOpen ] = React.useState(false)
 	return(
 		<div>
-			<div className="">
-				<div className="hero-container top-section position-relative">
-					<div className="container">
-						<div className="d-flex align-items-center justify-content-between">
-							<div>
-								<h2 className="m-0 mt-thin">Heads Up</h2>
-							</div>
-							<div>
-								<div className="d-flex align-items-center">
-									<div>
-										<div className="menu-item">
-											Home
-											<div className="menu-item-underline"></div>
-										</div>
-									</div>
-									<div>
-										<div className="menu-item">
-											Preview
-											<div className="menu-item-underline"></div>
-										</div>
-									</div>
-									<div>
-										<div className="menu-item">
-											Contact
-											<div className="menu-item-underline"></div>
-										</div>
-									</div>
-									<div>
-										<div className="menu-item">
-											About
-											<div className="menu-item-underline"></div>
-										</div>
-									</div>
-								</div>
-							</div>
+			<Modal show={open} onHide={() => setOpen(false)} size="lg" centered>
+				<div className="position-relative d-flex justify-content-end">
+					<div className="close-button p-4 cursor-pointer" onClick={() => setOpen(false)}>
+						<FaTimes size="24" />
+					</div>
+				</div>
+				<Modal.Body>
+					<div className="px-2 px-md-4">
+						<h4 className="text-pink mt-bold">Get the app now!</h4>
+						<div>
+
 						</div>
 					</div>
+				</Modal.Body>
+				<Modal.Footer>
+					<div className="btn btn-hollow" onClick={() => setOpen(false)}>
+						Close	
+					</div>
+					<div className="btn btn-solid">
+						Submit
+					</div>
+				</Modal.Footer>
+			</Modal>
+			<div className="">
+				<div className="hero-container top-section position-relative">
+					<Header />
 					<div className="row no-gutters align-items-center top-section-content container mx-auto">
-						<div className="col-12 col-md-6">
-							<div className="d-flex align-items-center justify-content-center">
+						<div className="col-12 col-md-6 py-5 py-md-0">
+							<div className="d-flex align-items-center justify-content-center py-5 py-md-0">
 								<div>
 									<h1 className="mt-bold font-3">Heads Up!</h1>
 									<h4 style={{color: "rgb(11 22 51 / 61%)"}}>
@@ -65,7 +59,7 @@ export default function Home() {
 									<img />
 								</div>
 								<div className="d-flex justify-content-center">
-									<SingleArrowButton solid>
+									<SingleArrowButton solid onClick={() => setOpen(true)}>
 										Get the App
 									</SingleArrowButton>
 									<div className="btn btn-hollow mx-2">
@@ -82,24 +76,27 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
-			<div className="py-5 bg-white">
+			<div className="py-5 bg-white" id="timeline">
 				<div className="py-5 container">
-					<h2 className="mt-bold">
+					<h1 className="mt-bold">
 						Timeline
-					</h2>
+					</h1>
 				</div>
 				<div className="mb-5">
 					<Timeline />
 				</div>
 			</div>
-			<div>
-				<div className="text-center mb-5">
+			<div className="position-relative" style={{top: "-100px"}} id="wall">
+
+			</div>
+			<div className="pt-5">
+				<div className="container mb-5">
 					<h1 className="mt-bold pb-5">My Wall</h1>
 				</div>
 				<div className="wall-container py-5 position-relative">
 					<div className="quote-container w-100 font-11 mt-light">
 						<div className="quote-box position-absolute p-3 p-md-5 d-flex align-items-center justify-content-center">
-							“Just because you don't understand it doesn't mean it isn't so.” – Lemony Snicket
+							All feelings are valid
 						</div>
 					</div>
 					<div className="py-1 py-md-3">
@@ -126,6 +123,7 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
+			<Footer />
 			<style jsx>{`
 				.wall-container {
 					min-height: 70vh;
@@ -135,21 +133,27 @@ export default function Home() {
 					background-position: center;
 				}
 				.quote-box {
-					background: white;
-					max-width: 800px;
+					width: 100%;
 					margin: 0px auto;
 					left: 0px;
 					right: 0px;
-					border-radius: 10px;
-					box-shadow: 0px 0px 10px 2px #20253c2e;
 					min-height: 100px;
-					top: -50px;
+					top: -78px;
+					font-size: 2.5rem;
+					font-family: madetommy-bold;
+					border-radius: 10px;
+				}
+				@media(max-width: 576px){
+					.quote-box {
+						background: white;
+						font-size: 1rem;
+					}
 				}
 				.form-control {
 					max-width: 400px;
 					margin: 0px auto;
 					border: none;
-					border-bottom: 1px solid white;
+					border-bottom: 1px solid rgba(255,255,255,0.5);
 					color: white;
 					background: transparent;
 					border-radius: 0px;
@@ -161,43 +165,21 @@ export default function Home() {
 					border: none;
 					outline: none;
 					box-shadow: none;
-					border-bottom: 3px solid white;
+					border-bottom: 3px solid rgba(255,255,255,0.5);
 				}
-				input::-webkit-input-placeholder {color: #061242;}
-				input::-moz-placeholder { color: #061242;}
-				input:-ms-input-placeholder { color: #061242;}
-				input:-moz-placeholder {color: #061242;}
-				textarea::-webkit-input-placeholder {color: #061242;}
-				textarea::-moz-placeholder { color: #061242;}
-				textarea:-ms-input-placeholder { color: #061242;}
-				textarea:-moz-placeholder {color: #061242;} 
+				input::-webkit-input-placeholder {color: #061242c5;}
+				input::-moz-placeholder { color: #061242c5;}
+				input:-ms-input-placeholder { color: #061242c5;}
+				input:-moz-placeholder {color: #061242c5;}
+				textarea::-webkit-input-placeholder {color: #061242c5;}
+				textarea::-moz-placeholder { color: #061242c5;}
+				textarea:-ms-input-placeholder { color: #061242c5;}
+				textarea:-moz-placeholder {color: #061242c5;} 
 				.top-section {
 					background: linear-gradient(to bottom,white,#2998ca);
 				}
 				.top-section-content {
-					min-height: calc(100vh - 94px - 76px);
-				}
-				.menu-item {
-					padding: 34px 20px;
-					cursor: pointer;
-					font-family: madetommy-light;
-					font-size: 1.1rem;
-					position: relative;
-				}
-				.menu-item-underline {
-					position: absolute;
-					bottom: 24px;
-					left: 20px;
-					height: 3px;
-					width: 0px;
-					background: #174282;
-					transition: 0.2s;
-				}
-				.menu-item:hover {
-					color: #174282;
-				}
-				.menu-item:hover > .menu-item-underline {
-					width: 36px;
+					min-height: calc(100vh - 56px);
 				}
 				.custom-shape-divider-bottom-1603289794 {
 					position: absolute;

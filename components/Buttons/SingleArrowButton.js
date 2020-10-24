@@ -3,7 +3,7 @@ import { MdSend } from 'react-icons/md'
 
 export default function SingleArrowButton(props) {
     return (
-        <div>
+        <div onClick={props.onClick}>
             <button className={`btn ${props.solid && "btn-solid"} ${props.hollow && "btn-hollow"}`} disabled={props.disabled}>
                 <div className="d-flex align-items-center">
                     <div className="text-content">

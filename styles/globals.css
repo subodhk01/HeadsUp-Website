@@ -3,6 +3,10 @@ body {
 	color: rgb(20, 36, 80);
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 .mt-reg {
 	font-family: 'madetommy-regular';
 }
@@ -14,6 +18,10 @@ body {
 }
 .mt-bold {
 	font-family: 'madetommy-bold';
+}
+
+.text-pink {
+	color: #f24f86;
 }
 
 .hero-container {
@@ -32,7 +40,7 @@ body {
 	color: white;
 }
 .btn-hollow {
-	padding: 0.63rem 1.7rem;
+	padding: 0.58rem 1.7rem;
 	border: 2px solid #061242;
     border-radius: 100px;
     color: #061242;
@@ -94,3 +102,7 @@ body {
 .font-48 { font-size: 4.8rem; }
 .font-49 { font-size: 4.9rem; }
 .font-50, .font-5 { font-size: 5rem; }
+
+.cursor-pointer {
+	cursor: pointer;
+}
