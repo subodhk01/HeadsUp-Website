@@ -13,7 +13,7 @@ export default function Header(props) {
                             <div className="d-flex align-items-center">
                                 <a href="#timeline">
                                     <div className="menu-item">
-                                        Timeline
+                                        Events
                                         <div className="menu-item-underline"></div>
                                     </div>
                                 </a>

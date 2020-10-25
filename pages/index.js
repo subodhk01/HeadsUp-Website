@@ -125,7 +125,7 @@ export default function Home() {
 										Building the mental wellness community India needs!
 									</h4>
 									<h6 data-aos="fade-up" data-aos-delay={800}>
-										We at HeadsUp, aim to build mental wellness platform for teens and 
+										We at HeadsUp!, aim to build mental wellness platform for teens and 
 										college folks with motto of awareness prior to treatment. We intent 
 										to provide psychological help to the people in their relationship, 
 										career and connect with the  experts in the field.
