@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="footer-container py-5 px-3 px-md-0">
                 <div className="row no-gutters container mx-auto">
                     <div className="col-12 col-md-3 p-2 p-md-4" data-aos="fade-up">
-                        <h2 className="m-0 mt-bold text-pink">Heads Up</h2>
+                        <h2 className="m-0 mt-bold text-pink">Heads Up!</h2>
                     </div>
                     <div className="col-12 col-md-6 p-2 p-md-4" data-aos="fade-up">
                         <div>
