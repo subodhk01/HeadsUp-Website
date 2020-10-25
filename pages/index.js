@@ -1,11 +1,12 @@
 import React from 'react'
-import { FaTimes } from 'react-icons/fa'
-import Modal from 'react-bootstrap/Modal'
-import SingleArrowButton from '../components/Buttons/SingleArrowButton'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Timeline from '../components/Timeline/Timeline'
 import { loadFirebase } from '../util/firebase'
+import AOS from 'aos';
+import { FaTimes } from 'react-icons/fa'
+import Modal from 'react-bootstrap/Modal'
+import SingleArrowButton from '../components/Buttons/SingleArrowButton'
 
 export default function Home() {
 	const [ open, setOpen ] = React.useState(false)
@@ -16,6 +17,14 @@ export default function Home() {
 	const [ message, setMessage ] = React.useState("")
 	const [ msg1, setMsg1 ] = React.useState({})
 	const [ msg2, setMsg2 ] = React.useState({})
+	React.useEffect(() => {
+		if(window){
+			AOS.init({
+				duration: 1200,
+				delay: 300,
+			})
+		}
+	}, [])
 	const handleGetAppSubmit = (event) => {
 		setMsg1({})
 		event.preventDefault()
@@ -111,11 +120,11 @@ export default function Home() {
 						<div className="col-12 col-md-6 py-5 py-md-0">
 							<div className="d-flex align-items-center justify-content-center pt-5 pt-md-0 pr-0 pr-md-4">
 								<div className="pt-5 pt-md-0">
-									<h1 className="mt-bold font-3">Heads Up!</h1>
-									<h4 style={{color: "rgb(11 22 51 / 61%)"}}>
+									<h1 className="mt-bold font-3" data-aos="fade-up">Heads Up!</h1>
+									<h4 style={{color: "rgb(11 22 51 / 61%)"}} data-aos="fade-up" data-aos-delay={400}>
 										Building the mental wellness community India needs!
 									</h4>
-									<h6>
+									<h6 data-aos="fade-up" data-aos-delay={800}>
 										We at HeadsUp, aim to build mental wellness platform for teens and 
 										college folks with motto of awareness prior to treatment. We intent 
 										to provide psychological help to the people in their relationship, 
@@ -126,10 +135,10 @@ export default function Home() {
 						</div>
 						<div className="col-12 col-md-6 pb-5 pb-md-0">
 							<div className="pb-5 pb-md-0">
-								<div className="video-container">
+								<div className="video-container" data-aos="fade-up">
 									<iframe src="https://www.youtube.com/embed/nYcLnUxYYcw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 								</div>
-								<div className="d-flex justify-content-center pb-5 pb-md-0">
+								<div className="d-flex justify-content-center pb-5 pb-md-0" data-aos="fade-up">
 									<SingleArrowButton solid onClick={() => setOpen(true)}>
 										Get the App
 									</SingleArrowButton>
@@ -148,12 +157,12 @@ export default function Home() {
 				</div>
 			</div>
 			<div className="py-5 bg-white" id="timeline">
-				<div className="py-5 container text-center">
+				<div className="py-5 container text-center" data-aos="fade-up">
 					<h1 className="mt-bold font-3">
-						Timeline
+						Events
 					</h1>
 				</div>
-				<div className="mb-5">
+				<div className="mb-5" data-aos="fade-up">
 					<Timeline />
 				</div>
 			</div>
@@ -161,11 +170,11 @@ export default function Home() {
 
 			</div>
 			<div className="pt-5 mb-3 outer-wall">
-				<div className="container mb-5 text-center">
+				<div className="container mb-5 text-center" data-aos="fade-up">
 					<h1 className="mt-bold pb-5 font-3">My Wall</h1>
 				</div>
 				<div className="wall-container py-5 position-relative">
-					<div className="quote-container w-100 font-11 mt-light">
+					<div className="quote-container w-100 font-11 mt-light" data-aos="fade-up">
 						<div className="quote-box position-absolute p-3 p-md-5 d-flex align-items-center justify-content-center">
 							All feelings are valid
 						</div>
@@ -174,18 +183,18 @@ export default function Home() {
 						<form className="pt-5 m-2" onSubmit={(event) => handleMessageSubmit(event)}>
 							<div className="row no-gutters">
 								<div className="col-12 col-md-6">
-									<div className="form-group">
+									<div className="form-group" data-aos="fade-up" data-aos-delay={400}>
 										<input className="form-control" placeholder="Your Instagram handle" value={insta} onChange={(event) => setInsta(event.target.value)} required/>
 									</div>
-									<div className="form-group">
+									<div className="form-group" data-aos="fade-up" data-aos-delay={400}>
 										<input className="form-control" placeholder="Your Email" value={email} onChange={(event) => setEmail(event.target.value)} required/>
 									</div>
 								</div>
 								<div className="col-12 col-md-6">
-									<div className="form-group">
+									<div className="form-group" data-aos="fade-up" data-aos-delay={400}>
 										<textarea className="form-control border-0" rows="5" placeholder="Your Message" value={message} onChange={(event) => setMessage(event.target.value)} required/>
 									</div>
-									<div className="w-100 text-center pb-3">
+									<div className="w-100 text-center pb-3" data-aos="fade-up" data-aos-delay={400}>
 										{msg2 && msg2.success && <span className="text-pink">You message has been recorded</span>}
 										{msg2 && msg2.error && <span className="text-danger">Unable to process your request, please try again later</span>}
 									</div>
@@ -198,7 +207,9 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
-			<Footer />
+			<div>
+				<Footer />
+			</div>
 			<style jsx>{`
 				.video-container {
 					box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.2);

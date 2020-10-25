@@ -7,7 +7,7 @@ export default function Header(props) {
                 <div className="container">
                     <div className="d-flex align-items-center justify-content-between">
                         <div>
-                            <h2 className="m-0 mt-bold text-pink">Heads Up</h2>
+                            <h2 className="m-0 mt-bold text-pink">Heads Up!</h2>
                         </div>
                         <div>
                             <div className="d-flex align-items-center">

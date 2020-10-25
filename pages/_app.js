@@ -1,8 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Head from 'next/head'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/flickity.css'
 import '../styles/font.css'
 import '../styles/globals.css'
+import 'aos/dist/aos.css'
 
 function MyApp({ Component, pageProps }) {
 	return (

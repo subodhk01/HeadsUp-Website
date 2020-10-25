@@ -4,17 +4,20 @@ const TIMELINE_DATA = [
     {
         image: "/images/mhd.jpg",
         title: "Mental Health Day Special Thoughts",
-        date: "Oct 10, 2020"
+        date: "Oct 10, 2020",
+        link: "https://www.instagram.com/p/CGKxCHchsre/?igshid=14im7d7if4tca"
     },
     {
         image: "/images/expert2.png",
         title: "Experts Insights Live #2",
-        date: "Aug 30, 2020"
+        date: "Aug 30, 2020",
+        link: "https://www.instagram.com/p/CEhAJRcBIa-/?igshid=u359gm3u3grz"
     },
     {
         image: "/images/expert1.png",
         title: "Experts Insights Live #1",
-        date: "Aug 22, 2020"
+        date: "Aug 22, 2020",
+        link: "https://www.instagram.com/tv/CEMabcVobr8/?igshid=m858zqknlt6m"
     },
 ]
 
@@ -29,7 +32,7 @@ export default function Timeline(){
                 options={flickityOptions} // takes flickity options {}
             >
                 {TIMELINE_DATA.map((item, index) =>
-                    <div key={index}>
+                    <a href={item.link} key={index}>
                         <div className="py-3 px-4">
                             <div>
                                 <img src={item.image} />
@@ -39,7 +42,7 @@ export default function Timeline(){
                                 <h6 className="text-muted">{item.date}</h6>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 )}
             </Flickity>
             <style jsx>{`
@@ -47,6 +50,10 @@ export default function Timeline(){
                     max-height: 300px;
                     border-radius: 10px;
                     box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+                }
+                a, a:hover {
+                    text-decoration: none;
+                    color: rgb(20, 36, 80);
                 }
             `}</style>
         </div>
