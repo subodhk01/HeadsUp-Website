@@ -192,7 +192,7 @@ export default function Home() {
 								</div>
 								<div className="col-12 col-md-6">
 									<div className="form-group" data-aos="fade-up" data-aos-delay={400}>
-										<textarea className="form-control border-0" rows="5" placeholder="Your Message" value={message} onChange={(event) => setMessage(event.target.value)} required/>
+										<textarea className="form-control border-0" rows="5" placeholder="What's up in your mind" value={message} onChange={(event) => setMessage(event.target.value)} required/>
 									</div>
 									<div className="w-100 text-center pb-3" data-aos="fade-up" data-aos-delay={400}>
 										{msg2 && msg2.success && <span className="text-pink">You message has been recorded</span>}
