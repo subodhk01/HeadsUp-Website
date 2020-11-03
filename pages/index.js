@@ -125,10 +125,10 @@ export default function Home() {
 										Building the mental wellness community India needs!
 									</h4>
 									<h6 data-aos="fade-up" data-aos-delay={800}>
-										We at HeadsUp!, aim to build mental wellness platform for teens and 
-										college folks with motto of awareness prior to treatment. We intent 
-										to provide psychological help to the people in their relationship, 
-										career and connect with the  experts in the field.
+										We at HeadsUp! , aim to build mental wellness platform for teenagers and college
+										folk with the motto of "Awareness prior to Treatment". We intend to provide 
+										psychological help to the people in their relationship, career and connect with 
+										the  experts in the field.
 									</h6>
 								</div>
 							</div>
