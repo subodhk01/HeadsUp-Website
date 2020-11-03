@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && next export",
     "start": "next start"
   },
   "dependencies": {
     "aos": "^2.3.4",
     "bootstrap": "^4.5.3",
-    "firebase": "^7.24.0",
+    "firebase": "^8.0.0",
     "flickity": "^2.2.1",
     "next": "9.5.5",
     "react": "17.0.0",
